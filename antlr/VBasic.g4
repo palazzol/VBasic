@@ -40,7 +40,16 @@ prog
 
 // a line starts with an INT
 line
-    : linenumber (amprstmt (COLON amprstmt?)* | COMMENT | REM)
+    : linenumber linecontent
+    ;
+
+typedline
+    : linenumber? linecontent
+    | linenumber
+    ;
+
+linecontent
+    : (amprstmt (COLON amprstmt?)* | COMMENT | REM)
     ;
 
 amperoper
@@ -69,6 +78,7 @@ statement
     | NORMAL
     | SHLOAD
     | CLEAR
+    | NEW
     | RUN
     | STOP
     | TEXT
@@ -663,6 +673,10 @@ COMMA
 
 LIST
     : 'LIST'
+    ;
+
+NEW
+    : 'NEW'
     ;
 
 RUN

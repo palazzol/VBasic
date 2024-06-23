@@ -16,7 +16,16 @@ class VBasicVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by VBasicParser#line.
     def visitLine(self, ctx:VBasicParser.LineContext):
-        print("visitLine")
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by VBasicParser#typedline.
+    def visitTypedline(self, ctx:VBasicParser.TypedlineContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by VBasicParser#linecontent.
+    def visitLinecontent(self, ctx:VBasicParser.LinecontentContext):
         return self.visitChildren(ctx)
 
 
@@ -27,7 +36,6 @@ class VBasicVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by VBasicParser#linenumber.
     def visitLinenumber(self, ctx:VBasicParser.LinenumberContext):
-        print("visitLinenumber")
         return self.visitChildren(ctx)
 
 
